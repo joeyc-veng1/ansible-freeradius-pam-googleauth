@@ -1,5 +1,4 @@
-# freeradius-pam-googleauth
-Ansible Playbook to build FreeRADIUS servers with PAM and Google Authenticator (OTP) support
+# Ansible Playbook to build FreeRADIUS servers with PAM and Google Authenticator (OTP) support
 
 Tested on Ubuntu 22.04, joined to a Samba 4.15 domain using realmd/sssd
 
