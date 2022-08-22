@@ -3,7 +3,7 @@ Ansible Playbook to build FreeRADIUS servers with PAM and Google Authenticator (
 
 Tested on Ubuntu 22.04, joined to a Samba 4.15 domain using realmd/sssd
 
-Example Playbook
+**Example Playbook**
 
 ```
 ---
@@ -16,7 +16,8 @@ Example Playbook
     - pamonly-radius-servers
     - google-authenticator
 ```
-Sources:
+**Sources**
 
 https://rharmonson.github.io/2factorcos7.html
+
 https://serverfault.com/questions/875709/freeradius-3-cant-find-auth-type-for-pfsense-openvpn-auth-requests
