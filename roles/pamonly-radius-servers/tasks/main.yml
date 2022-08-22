@@ -1,0 +1,11 @@
+---
+### tasks file to install FreeRADIUS on Ubuntu
+- name: Install the FreeRADIUS package
+  import_tasks: install.yml 
+
+- name: Push the configuration files
+  import_tasks: files.yml
+
+- name: "Configure Firewall Rules"
+  import_tasks: ufw.yml
+...

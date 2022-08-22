@@ -1,0 +1,5 @@
+- name: reload freeradius systemd
+  systemd: name=freeradius daemon_reload=yes
+
+- name: restart freeradius
+  systemd: name=freeradius state=restarted daemon_reload=yes

@@ -1,0 +1,65 @@
+- name: Make the FreeRADIUS service run as root
+  replace:
+    path: /etc/systemd/system/multi-user.target.wants/freeradius.service
+    regexp: 'User=freerad'
+    replace: 'User=root'
+    backup: yes
+
+- name: Make the FreeRADIUS service run as the root group
+  notify: reload freeradius systemd
+  replace:
+    path: /etc/systemd/system/multi-user.target.wants/freeradius.service
+    regexp: 'Group=freerad'
+    replace: 'Group=root'
+    backup: yes
+
+- name: install radius config files
+  notify: restart freeradius
+  copy:
+    src: '{{item}}'
+    dest: /etc/freeradius/3.0/{{item}}
+    owner: freerad
+    group: freerad
+    mode: 0640
+    backup: yes
+  with_items:
+    - radiusd.conf
+    - users
+    - sites-available/default
+    - mods-config/files/authorize
+
+- name: install the radius client list
+  notify: restart freeradius
+  copy:
+    src: '{{item}}'
+    dest: /etc/freeradius/3.0/{{item}}
+    owner: freerad
+    group: freerad
+    mode: 0640
+    backup: yes
+  with_items:
+    - clients.conf
+
+- name: enable radius modules
+  notify: restart freeradius
+  file:
+    path: /etc/freeradius/3.0/mods-enabled/{{item}}
+    state: link
+    src: ../mods-available/{{item}}
+  with_items:
+    - always
+    - attr_filter
+    - detail
+    - detail.log
+    - exec
+    - expr
+    - pam
+
+- name: enable sites
+  notify: restart freeradius
+  file:
+    path: /etc/freeradius/3.0/sites-enabled/{{item}}
+    state: link
+    src: ../sites-available/{{item}}
+  with_items:
+    - default

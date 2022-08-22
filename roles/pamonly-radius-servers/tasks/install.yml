@@ -1,0 +1,22 @@
+---
+- name: Install the FreeRADIUS package using APT
+  apt:
+    name: freeradius
+    state: latest 
+    update_cache: true
+  when: ( ansible_os_family == "Debian" )
+  
+  #- name: Add the FreeRADIUS user to the Winbind privileged group
+  #  user:
+  #    name: freerad
+  #    groups: winbindd_priv
+  #    append: yes
+  #  ignore_errors: yes
+    
+  #- name: Allow the Winbind privileged group to access the socket
+  #  file:
+  #    path: /var/lib/samba/winbindd_privileged
+  #    state: directory
+  #    owner: root
+  #    group: winbindd_priv
+  #  ignore_errors: yes

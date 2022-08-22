@@ -1,0 +1,5 @@
+- name: "Configure ufw rules"
+  ufw: rule={{ item.rule }} port={{ item.port }} proto={{ item.proto }}
+  with_items:
+    - { rule: 'allow', port: '1812:1813', proto: 'tcp' }
+    - { rule: 'allow', port: '1812:1813', proto: 'udp' }

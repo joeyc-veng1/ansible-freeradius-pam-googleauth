@@ -1,0 +1,8 @@
+#
+# /etc/pam.d/radiusd - PAM configuration for FreeRADIUS
+#
+
+# We will use Google Authenticator and sssd only
+
+auth requisite pam_google_authenticator.so forward_pass
+auth required pam_sss.so use_first_pass
