@@ -3,6 +3,7 @@ Ansible Playbook to build FreeRADIUS servers with PAM and Google Authenticator (
 
 Example Playbook
 
+```
 ---
 # Playbook to configure the Google Authenticator OTP servers
 
@@ -12,3 +13,4 @@ Example Playbook
   roles:
     - pamonly-radius-servers
     - google-authenticator
+```
