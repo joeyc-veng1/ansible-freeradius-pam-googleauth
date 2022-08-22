@@ -16,3 +16,7 @@ Example Playbook
     - pamonly-radius-servers
     - google-authenticator
 ```
+Sources:
+
+https://rharmonson.github.io/2factorcos7.html
+https://serverfault.com/questions/875709/freeradius-3-cant-find-auth-type-for-pfsense-openvpn-auth-requests
