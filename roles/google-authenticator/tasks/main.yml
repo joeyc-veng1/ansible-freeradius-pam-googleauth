@@ -7,7 +7,7 @@
     - libqrencode4
 
 - name: Copy the PAM RADIUS auth file
-  #notify: restart freeradius
+  notify: restart freeradius
   copy:
     src: etc/pam.d/radiusd
     dest: /etc/pam.d/radiusd
